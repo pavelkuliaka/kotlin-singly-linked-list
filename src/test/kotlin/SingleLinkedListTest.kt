@@ -103,4 +103,51 @@ class SingleLinkedListTest {
         list[2] = 5
         assertEquals(5, list[2])
     }
+
+    @Test
+    fun `addFirst on empty list and remove single element`() {
+        list.addFirst(1)
+        assertEquals(1, list[0])
+        assertEquals(1, list.size)
+
+        assertTrue(list.remove(1))
+        assertEquals(0, list.size)
+        assertFalse(list.contains(1))
+    }
+
+    @Test
+    fun `remove from all positions`() {
+        list.add(1)
+        list.add(2)
+        list.add(3)
+        list.add(4)
+
+        assertTrue(list.remove(1))
+        assertEquals(3, list.size)
+        assertEquals(2, list[0])
+
+        assertTrue(list.remove(3))
+        assertEquals(2, list[0])
+        assertEquals(4, list[1])
+
+        assertTrue(list.remove(4))
+        assertEquals(1, list.size)
+        assertEquals(2, list[0])
+    }
+
+    @Test
+    fun `iterator throws when exceeding elements`() {
+        list.add(10)
+        list.add(20)
+
+        val iter = list.iterator()
+        assertTrue(iter.hasNext())
+        assertEquals(10, iter.next())
+        assertTrue(iter.hasNext())
+        assertEquals(20, iter.next())
+        assertFalse(iter.hasNext())
+        assertThrows(NoSuchElementException::class.java) {
+            iter.next()
+        }
+    }
 }

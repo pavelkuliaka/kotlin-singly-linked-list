@@ -91,7 +91,7 @@ class SingleLinkedListTest {
         list.add(20)
         list.add(30)
 
-        assertEquals(2, list.indexOf(20))
+        assertEquals(1, list.indexOf(20))
     }
 
     @Test

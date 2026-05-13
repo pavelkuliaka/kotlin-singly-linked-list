@@ -3,7 +3,7 @@ package org.example.stack
 import org.example.list.CustomArrayList
 import org.example.list.CustomList
 
-class ArrayListStack(capacity: Int) : CustomList by CustomArrayList(capacity), Stack {
+class ArrayListStack : CustomList by CustomArrayList(10), Stack {
 
     override fun push(value: Int) {
         addFirst(value)
